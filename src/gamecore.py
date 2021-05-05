@@ -2,6 +2,7 @@
 """
 """
 import sys
+import logging
 
 
 class GameCore(object):
