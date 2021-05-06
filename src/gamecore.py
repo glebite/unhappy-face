@@ -16,12 +16,16 @@ class GameCore(object):
         self.stats = {'win': 0,
                       'lose': 0,
                       'games': 0,
-                      'correct': 0,
-                      'incorrect': 0}
+                      'correct letters': 0,
+                      'incorrect letters': 0}
 
     def __str__(self):
-        """__str__ representation output """
+        """__str__ string output """
         return f'{self.stats}'
+
+    def __repr__(self):
+        """__repr__ represent"""
+        return f'{self}'
 
 
 def main(arguments):
