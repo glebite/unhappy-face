@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
-"""
+"""wordselection.py
+
+So the idea is that this class/module will allow for the 
+reading in of a .csv file and the game can select the current_farsi_word
+to be tried out, and upon success or failure, there is a method that
+then allows for the second phase of the game where the user is prompted
+to match the Farsi word with a list of english words!!!
+
+Ultimately, this can be moved out to use other languages and such but
+for now it will just be Farsi and English.
 """
 import sys
 import csv
@@ -48,8 +57,8 @@ class WordSelection(object):
             self.word_bag = {row[1].strip(): (row[0].strip(), row[2].strip())
                              for row in reader}
 
-    def pick_word(self):
-        """pick_word - randomly select a word to use
+    def pick_word_group(self):
+        """pick_word_group - randomly select a word to use
 
         param:  None
         return: word_data - list containing farsi, english, english def
