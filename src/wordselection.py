@@ -18,7 +18,7 @@ PICK_ENGLISH = 4
 
 
 class WordSelection(object):
-    """
+    """WordSelection
     """
     def __init__(self, arguments):
         """__init__ - create the WordSelection object
@@ -30,12 +30,12 @@ class WordSelection(object):
         self.word_bag = dict()
 
     def __str__(self):
-        """
+        """__str__ - string representation
         """
         print(f'{self.file_name=}')
 
     def __repr__(self):
-        """
+        """__repr__ - representative 
         """
         return print(f'{self}')
 
