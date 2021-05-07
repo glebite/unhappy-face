@@ -22,7 +22,10 @@ class WordSelection(object):
     """
     """
     def __init__(self, arguments):
-        """
+        """__init__ - create the WordSelection object
+
+        param:  arguments
+        return: n/a
         """
         self.file_name = arguments
         self.word_bag = dict()
@@ -56,26 +59,27 @@ class WordSelection(object):
             reader = csv.reader(csvfile, delimiter=',')
             self.word_bag = {row[1].strip(): (row[0].strip(), row[2].strip())
                              for row in reader}
+        return None
 
     def pick_word_group(self):
         """pick_word_group - randomly select a word to use
 
         param:  None
-        return: word_data - list containing farsi, english, english def
+        return: list containing farsi, english, english def
         """
         farsi = random.choice(list(self.word_bag))
         english, english_desc = self.word_bag[farsi]
         return [farsi, english, english_desc]
 
-    def pick_some_english(self, current_farsi_word, k=PICK_ENGLISH):
+    def pick_some_english(self, word_group, k=PICK_ENGLISH):
         """pick_some_english - find 'k' english words
 
-        param:  current_farsi_word - the list returned from pick_word
+        param:  word_group - the list returned from pick_word
         return: picks - a list of 'k' english words for comparison
         """
         temp_word_bag = self.word_bag
         # remove the current_farsi_word from our selection base
-        temp_word_bag.pop(current_farsi_word)
+        temp_word_bag.pop(word_group[0])
 
         # temp_word_bag[word_key] is a tuple - we want the first entry
         picks = [temp_word_bag[word_key][0] for word_key in
@@ -88,7 +92,8 @@ def main(arguments):
     """
     x = WordSelection(arguments)
     x.read_file()
-    print(x.pick_some_english('گل'))
+    y = x.pick_word_group()
+    print(x.pick_some_english(y))
 
 
 if __name__ == "__main__":
