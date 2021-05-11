@@ -4,6 +4,13 @@
 
 
 NORMALGAME = 6
+FACEPIECES = [
+    'top-outline',
+    'bottom-outline',
+    'left-eye',
+    'right-eye',
+    'nose',
+    'unhappy-smile']
 
 
 class Unhappy(object):
