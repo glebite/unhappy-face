@@ -2,8 +2,6 @@
 """unhappy.py - base class for displaying unhappy face
 """
 
-
-NORMALGAME = 6
 FACEPIECES = [
     'top-outline',
     'bottom-outline',
@@ -11,6 +9,7 @@ FACEPIECES = [
     'right-eye',
     'nose',
     'unhappy-smile']
+NORMALGAME = len(FACEPIECES)
 
 
 class Unhappy(object):
@@ -25,7 +24,8 @@ class Unhappy(object):
     def draw(self):
         """draw - base unhappy face
         """
-        pass
+        for piece in range(self.to_draw):
+            print(f'{FACEPIECES[piece]}')
 
     def __str__(self):
         return f'%={self.to_draw/self.n_pieces}'
@@ -37,7 +37,10 @@ class Unhappy(object):
 def main():
     """
     """
-    pass
+    u = Unhappy()
+    u.draw()
+    u.to_draw = 3
+    u.draw()
 
 
 if __name__ == "__main__":
