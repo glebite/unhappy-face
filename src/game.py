@@ -7,7 +7,14 @@ import wordselection
 
 
 class Game(object):
+    """
+    """
     def __init__(self):
+        """
+        """
+        self.game = gamecore.GameCore()
+        self.unhappy = unhappy.Unhappy()
+        self.wordselection = wordselection.WordSelection()
         pass
 
 
