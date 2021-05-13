@@ -38,9 +38,9 @@ def main():
     """
     """
     u = Unhappy()
-    u.draw()
-    u.to_draw = 3
-    u.draw()
+    for pieces in range(NORMALGAME):
+        u.to_draw = pieces
+        u.draw()
 
 
 if __name__ == "__main__":
