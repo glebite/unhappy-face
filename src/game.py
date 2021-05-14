@@ -17,13 +17,17 @@ class Game(object):
         # TODO: move to configuration or such..
         self.wordselection = wordselection.WordSelection('../data/nouns.txt')
         self.wordselection.read_file()
-        
+        word_group = (self.wordselection.pick_word_group())
+        for x in word_group[0]:
+            print(f'letter: {x}')
+        if x in word_group[0]:
+            print(f'Yes, {x} is in {word_group[0]}')
+
 
 def main():
     """
     """
     game = Game()
-    print(game.wordselection.word_bag)
 
 
 if __name__ == "__main__":
