@@ -28,7 +28,8 @@ class WordSelection(object):
         """
         self.file_name = arguments
         self.word_bag = dict()
-        self.farsi = None
+        self.word_structure = list()
+        self.farsi = ''
 
     def __str__(self):
         """__str__ - string representation
@@ -36,7 +37,7 @@ class WordSelection(object):
         print(f'{self.file_name=}')
 
     def __repr__(self):
-        """__repr__ - representative 
+        """__repr__ - representative
         """
         return print(f'{self}')
 
@@ -103,6 +104,25 @@ class WordSelection(object):
         """
         pass
 
+    def create_word_structure(self):
+        """create_word_structure
+        """
+        self.word_structure = [{k: ''} for k in self.farsi]
+
+    def output_word_structure(self):
+        """ create_word_structure
+        """
+        output = ""
+        for key_pair in self.word_structure.copy():
+            value = key_pair.popitem()[1]
+            if value == ' ':
+                output += ' - '
+            elif value:
+                output += f' {value} '
+            else:
+                output += ' _ '
+        return output
+
 
 def main(arguments):
     """
@@ -111,7 +131,9 @@ def main(arguments):
     x.read_file()
     y = x.pick_word_group()
     print(x.pick_some_english(y))
-
+    x.create_word_structure()
+    print(x.output_word_structure())
+    print(x.farsi)
 
 if __name__ == "__main__":
     main('../data/nouns.txt')
