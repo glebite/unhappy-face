@@ -11,11 +11,19 @@ class UserInput(object):
         """
         pass
 
+    def prompt_for_character(self):
+        """prompt_for_character
+        """
+        print('Enter a character choice: ')
+        character = input()
+        print(f'User chose: {character}')
+
 
 def main():
     """
     """
     user = UserInput()
+    print(user)
 
 
 if __name__ == "__main__":
