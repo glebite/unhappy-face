@@ -3,8 +3,19 @@
 """
 
 
+class UserInput(object):
+    """
+    """
+    def __init__(self):
+        """__init__
+        """
+        pass
+
+
 def main():
-    pass
+    """
+    """
+    user = UserInput()
 
 
 if __name__ == "__main__":
