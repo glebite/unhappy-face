@@ -28,6 +28,7 @@ class WordSelection(object):
         """
         self.file_name = arguments
         self.word_bag = dict()
+        self.farsi = None
 
     def __str__(self):
         """__str__ - string representation
@@ -68,6 +69,7 @@ class WordSelection(object):
         """
         farsi = random.choice(list(self.word_bag))
         english, english_desc = self.word_bag[farsi]
+        self.farsi = farsi
         return [farsi, english, english_desc]
 
     def pick_some_english(self, word_group, k=PICK_ENGLISH):
@@ -84,6 +86,22 @@ class WordSelection(object):
         picks = [temp_word_bag[word_key][0] for word_key in
                  random.sample(list(temp_word_bag), k=k)]
         return picks
+
+    def check_guess(self, guess_letter):
+        """check_guess
+
+        :param:  guess_letter - the letter being guessed
+        :return: result - True (correct) or False (incorrect)
+        """
+        return guess_letter in self.farsi
+
+    def update_guessing(self, correct_letter):
+        """update_guessing
+
+        :param:  correct_letter
+        :return: n/a
+        """
+        pass
 
 
 def main(arguments):
