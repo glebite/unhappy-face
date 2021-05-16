@@ -12,7 +12,7 @@ class UserInput(object):
         pass
 
     def prompt(self):
-        """prmopt
+        """prompt
         """
         print('Enter user input: ')
         userinput = input()

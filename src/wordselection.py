@@ -12,6 +12,7 @@ for now it will just be Farsi and English.
 """
 import csv
 import random
+import copy
 
 
 PICK_ENGLISH = 4
@@ -113,9 +114,10 @@ class WordSelection(object):
         """ create_word_structure
         """
         output = ""
-        for key_pair in self.word_structure.copy():
-            value = key_pair.popitem()[1]
-            if value == ' ':
+        tmp = copy.deepcopy(self.word_structure)
+        for key_pair in tmp:
+            key, value = key_pair.popitem()
+            if key == ' ':
                 output += ' - '
             elif value:
                 output += f' {value} '
@@ -132,6 +134,8 @@ def main(arguments):
     y = x.pick_word_group()
     print(x.pick_some_english(y))
     x.create_word_structure()
+    print(x.output_word_structure())
+    x.word_structure[0] = {'a': 'a'}
     print(x.output_word_structure())
     print(x.farsi)
 
