@@ -38,11 +38,14 @@ class Game(object):
                 if command in self.word_group[0]:
                     print(f'{command} found!')
                     self.wordselection.update_word_structure(command)
+                    self.game.stats['correct letters'] += 1
                 else:
                     print(f'{command} not found!')
+                    self.game.stats['incorrect letters'] += 1
             if self.wordselection.word_solved():
                 print('Yay you win!')
                 self.ingame = False
+                print(self.game.stats)
 
 
 def main():
