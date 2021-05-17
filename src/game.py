@@ -41,7 +41,7 @@ class Game(object):
                 else:
                     print(f'{command} not found!')
             if self.wordselection.word_solved():
-                print(f'Yay you win!')
+                print('Yay you win!')
                 self.ingame = False
 
 
