@@ -46,6 +46,10 @@ class Game(object):
                 print('Yay you win!')
                 self.ingame = False
                 print(self.game.stats)
+            if self.game.stats['incorrect letters'] == unhappy.NORMALGAME:
+                print('Boo you lose!')
+                self.ingame = False
+                print(self.game.stats)
 
 
 def main():
