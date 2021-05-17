@@ -6,6 +6,7 @@ import unhappy
 import wordselection
 import userinput
 
+
 class Game(object):
     """
     """
@@ -27,6 +28,7 @@ class Game(object):
         print(f'Word: {self.word_group}')
 
         while self.ingame:
+            print(self.wordselection.output_word_structure())
             command = self.userinput.prompt()
             if command == "quit":
                 self.ingame = False
@@ -35,8 +37,12 @@ class Game(object):
             else:
                 if command in self.word_group[0]:
                     print(f'{command} found!')
+                    self.wordselection.update_word_structure(command)
                 else:
                     print(f'{command} not found!')
+            if self.wordselection.word_solved():
+                print(f'Yay you win!')
+                self.ingame = False
 
 
 def main():

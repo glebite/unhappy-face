@@ -40,7 +40,7 @@ class WordSelection(object):
     def __repr__(self):
         """__repr__ - representative
         """
-        return print(f'{self}')
+        return "blah"
 
     def read_file(self):
         """read_file - reads a .csv file filled with words
@@ -72,6 +72,7 @@ class WordSelection(object):
         farsi = random.choice(list(self.word_bag))
         english, english_desc = self.word_bag[farsi]
         self.farsi = farsi
+        self.create_word_structure()
         return [farsi, english, english_desc]
 
     def pick_some_english(self, word_group, k=PICK_ENGLISH):
@@ -113,6 +114,7 @@ class WordSelection(object):
     def output_word_structure(self):
         """ create_word_structure
         """
+        # TODO regsubs 
         output = ""
         tmp = copy.deepcopy(self.word_structure)
         for key_pair in tmp:
@@ -125,6 +127,30 @@ class WordSelection(object):
                 output += ' _ '
         return output
 
+    def update_word_structure(self, letter):
+        """update_word_structure
+        """
+        # TODO: make this into a comprhension
+        tmp = list()
+        for pair in self.word_structure:
+            print(f'{pair} {type(pair)}')
+            (k, v), = pair.items()
+            if k == letter:
+                tmp.append({k: letter})
+            else:
+                tmp.append({k: v})
+        self.word_structure = tmp
+
+    def word_solved(self):
+        """word_solved
+        """
+        rc = True
+        for pair in self.word_structure:
+            (k, v), = pair.items()
+            if v == '':
+                rc = False
+        return rc
+
 
 def main(arguments):
     """
@@ -135,9 +161,8 @@ def main(arguments):
     print(x.pick_some_english(y))
     x.create_word_structure()
     print(x.output_word_structure())
-    x.word_structure[0] = {'a': 'a'}
-    print(x.output_word_structure())
     print(x.farsi)
+
 
 if __name__ == "__main__":
     main('../data/nouns.txt')
