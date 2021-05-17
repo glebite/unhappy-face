@@ -114,7 +114,7 @@ class WordSelection(object):
     def output_word_structure(self):
         """ create_word_structure
         """
-        # TODO regsubs 
+        # TODO regsubs
         output = ""
         tmp = copy.deepcopy(self.word_structure)
         for key_pair in tmp:
@@ -142,8 +142,12 @@ class WordSelection(object):
         self.word_structure = tmp[::-1]
 
     def word_solved(self):
-        """word_solved
+        """word_solved - checks if solved
+
+        The word is considered to be solved if all
+        values in the word structure are filled out.
         """
+        # TODO: there is probably a pythonic way to do this
         rc = True
         for pair in self.word_structure:
             (k, v), = pair.items()
