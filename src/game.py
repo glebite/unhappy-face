@@ -28,6 +28,7 @@ class Game(object):
         print(f'Word: {self.word_group}')
 
         while self.ingame:
+            print(self.userinput.display_characters())
             print(self.wordselection.output_word_structure())
             command = self.userinput.prompt()
             if command == "quit":
@@ -43,6 +44,7 @@ class Game(object):
                     print(f'{command} not found!')
                     self.game.stats['incorrect letters'] += 1
                     self.unhappy.incr()
+                self.userinput.remove_character(command)
             if self.wordselection.word_solved():
                 print('Yay you win!')
                 self.ingame = False
@@ -51,6 +53,7 @@ class Game(object):
                 print('Boo you lose!')
                 self.ingame = False
                 print(self.game.stats)
+            print(f'Draw unhappy bits...')
             self.unhappy.draw()
 
 
