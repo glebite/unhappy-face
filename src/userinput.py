@@ -41,7 +41,7 @@ class UserInput(object):
     def __init__(self):
         """__init__
         """
-        pass
+        self.character_set = CHARACTERS.copy()
 
     def prompt(self):
         """prompt
@@ -50,6 +50,20 @@ class UserInput(object):
         userinput = input()
         print(f'User chose: {userinput}')
         return userinput
+
+    def display_characters(self):
+        """display_characters
+        """
+        print(f'{CHARACTERS}')
+
+    def remove_character(self, character):
+        """
+        """
+        try:
+            self.character_set.pop(character)
+        except ValueError:
+            print(f'{character} is not in current charset:'
+                  f' {self.character_set}')
 
 
 def main():
