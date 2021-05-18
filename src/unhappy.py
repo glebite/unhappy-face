@@ -33,6 +33,12 @@ class Unhappy(object):
     def __repr__(self):
         return f'Unhappy(n_pieces={self.n_pieces})'
 
+    def incr(self):
+        self.to_draw += 1
+
+    def clear(self):
+        self.to_draw = 0
+
 
 def main():
     """
