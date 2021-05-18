@@ -1,6 +1,38 @@
 #!/usr/bin/env python3
 """
 """
+CHARACTERS = {'ا': 'alef',
+              'ب': 'be',
+              'پ': 'pe',
+              'ت': 'te',
+              'ث': 'se',
+              'ج': 'jim',
+              'چ': 'che',
+              'ح': 'he',
+              'خ': 'khe',
+              'د': 'dal',
+              'ذ': 'zal',
+              'ر': 're',
+              'ز': 'ze',
+              'ژ': 'zhe',
+              'س': 'sin',
+              'ش': 'shin',
+              'ص': 'sad',
+              'ض': 'zad',
+              'ط': 'ta',
+              'ظ': 'za',
+              'ع': 'ayn',
+              'غ': 'gayn',
+              'ف': 'fe',
+              'ق': 'qaf',
+              'ک': 'kaf',
+              'گ': 'gaf',
+              'ل': 'lam',
+              'م': 'mim',
+              'ن': 'nun',
+              'و': 'vav',
+              'ه': 'he',
+              'ی': 'ye'}
 
 
 class UserInput(object):
