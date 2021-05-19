@@ -54,7 +54,7 @@ class UserInput(object):
     def display_characters(self):
         """display_characters
         """
-        print(f'{CHARACTERS}')
+        print(f'{self.character_set}')
 
     def remove_character(self, character):
         """
@@ -69,10 +69,10 @@ class UserInput(object):
 def main():
     """
     """
-    user = UserInput()
-    print(user)
-    user.prompt()
-
+    x = UserInput()
+    x.display_characters()
+    x.remove_character('ه')
+    x.display_characters()
 
 if __name__ == "__main__":
     main()
