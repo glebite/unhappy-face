@@ -139,7 +139,7 @@ class WordSelection(object):
                 tmp.append({k: letter})
             else:
                 tmp.append({k: v})
-        self.word_structure = tmp[::-1]
+        self.word_structure = tmp
 
     def word_solved(self):
         """word_solved - checks if solved
