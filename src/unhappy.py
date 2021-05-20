@@ -18,6 +18,8 @@ class Unhappy(object):
     def __init__(self, n_pieces=NORMALGAME):
         """__init__ -
         """
+        if n_pieces <= 0:
+            raise ValueError
         self.n_pieces = n_pieces
         self.to_draw = 0
 
