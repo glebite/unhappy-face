@@ -24,6 +24,19 @@ class Testing(unittest.TestCase):
         x = unhappy.Unhappy()
         self.assertEqual(x.to_draw, 0)
 
+    def test_confirm_clear_method(self):
+        x = unhappy.Unhappy()
+        x.to_draw = 1
+        self.assertEqual(x.to_draw, 1)
+        x.clear()
+        self.assertEqual(x.to_draw, 0)
+
+    def test_confirm_increment(self):
+        x = unhappy.Unhappy()
+        x.incr()
+        x.incr()
+        self.assertEqual(x.to_draw, 2)
+
 
 if __name__ == '__main__':
     unittest.main()
