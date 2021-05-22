@@ -32,6 +32,26 @@ class Testing(unittest.TestCase):
         x.create_word_structure()
         self.assertEqual(x.word_structure, test_structure)
 
+    def test_output_word_structure(self):
+        x = wordselection.WordSelection('nonce')
+        x.farsi = 'abc'
+        x.create_word_structure()
+        expected_output = " _  _  _ "
+        self.assertEqual(x.output_word_structure(), expected_output)
+
+    def test_word_not_solved(self):
+        x = wordselection.WordSelection('nonce')
+        x.farsi = 'abc'
+        x.create_word_structure()
+        self.assertEqual(x.word_solved(), False)
+
+    def test_word_solved(self):
+        x = wordselection.WordSelection('nonce')
+        x.farsi = 'abc'
+        x.create_word_structure()
+        x.word_structure = [{'a': 'a'}, {'b': 'b'}, {'c': 'c'}]
+        self.assertEqual(x.word_solved(), True)
+
 
 if __name__ == '__main__':
     unittest.main()
