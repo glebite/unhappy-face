@@ -11,6 +11,12 @@ class Testing(unittest.TestCase):
         x = userinput.UserInput()
         self.assertEqual(x.character_set, userinput.CHARACTERS)
 
+    def test_charset_remove(self):
+        x = userinput.UserInput()
+        # my favourite character :)
+        x.remove_character('پ')
+        self.assertNotIn('پ', x.character_set)
+
 
 if __name__ == '__main__':
     unittest.main()
