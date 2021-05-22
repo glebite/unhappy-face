@@ -39,10 +39,10 @@ class Game(object):
                 if command in self.word_group[0]:
                     print(f'{command} found!')
                     self.wordselection.update_word_structure(command)
-                    self.game.stats['correct letters'] += 1
+                    self.gamecore.incr_stat('correct letters')
                 else:
                     print(f'{command} not found!')
-                    self.game.stats['incorrect letters'] += 1
+                    self.gamecore.incr_stat('incorrect letters')
                     self.unhappy.incr()
                 self.userinput.remove_character(command)
             if self.wordselection.word_solved():
