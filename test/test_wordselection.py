@@ -52,6 +52,13 @@ class Testing(unittest.TestCase):
         x.word_structure = [{'a': 'a'}, {'b': 'b'}, {'c': 'c'}]
         self.assertEqual(x.word_solved(), True)
 
+    def test_word_partially_solved(self):
+        x = wordselection.WordSelection('nonce')
+        x.farsi = 'abc'
+        x.create_word_structure()
+        x.word_structure = [{'a': 'a'}, {'b': ''}, {'c': 'c'}]
+        self.assertEqual(x.word_solved(), False)
+
 
 if __name__ == '__main__':
     unittest.main()
