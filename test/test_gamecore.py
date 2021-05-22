@@ -26,6 +26,16 @@ class Testing(unittest.TestCase):
         x.incr_stat('win')
         self.assertEqual(x.stats['win'], 1)
 
+    def test_clear_stats(self):
+        rc = True
+        x = gamecore.GameCore('nonce')
+        x.incr_stat('win')
+        x.clear_stats()
+        for key in x.stats.keys():
+            if x.stats[key] != 0:
+                rc = False
+        self.assertTrue(rc)
+
 
 if __name__ == '__main__':
     unittest.main()
