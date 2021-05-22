@@ -33,7 +33,7 @@ class Game(object):
             command = self.userinput.prompt()
             if command == "quit":
                 self.ingame = False
-            elif command == "solve":
+            elif command == "reset":
                 self.ingame = False
             else:
                 if command in self.word_group[0]:
