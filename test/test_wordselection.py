@@ -20,6 +20,18 @@ class Testing(unittest.TestCase):
         x.farsi = ' شهر'
         self.assertEqual(x.check_guess('ه'), True)
 
+    def test_confirm_check_guess_false(self):
+        x = wordselection.WordSelection('nonce')
+        x.farsi = ' شهر'
+        self.assertEqual(x.check_guess('a'), False)
+
+    def test_word_structure(self):
+        x = wordselection.WordSelection('nonce')
+        x.farsi = 'abc'
+        test_structure = [{'a': ''}, {'b': ''}, {'c': ''}]
+        x.create_word_structure()
+        self.assertEqual(x.word_structure, test_structure)
+
 
 if __name__ == '__main__':
     unittest.main()
