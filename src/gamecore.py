@@ -26,6 +26,12 @@ class GameCore(object):
         """__repr__ represent"""
         return f'{self}'
 
+    def incr_stat(self, stat):
+        if stat in self.stats:
+            self.stats[stat] += 1
+        else:
+            raise ValueError
+
 
 def main(arguments):
     """main - launcher if executed as a tool
