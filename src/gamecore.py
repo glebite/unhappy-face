@@ -32,6 +32,10 @@ class GameCore(object):
         else:
             raise ValueError
 
+    def clear_stats(self):
+        for key in self.stats.keys():
+            self.stats[key] = 0
+
 
 def main(arguments):
     """main - launcher if executed as a tool
