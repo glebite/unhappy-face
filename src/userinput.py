@@ -74,5 +74,6 @@ def main():
     x.remove_character('ه')
     x.display_characters()
 
+
 if __name__ == "__main__":
     main()

@@ -59,6 +59,13 @@ class Testing(unittest.TestCase):
         x.word_structure = [{'a': 'a'}, {'b': ''}, {'c': 'c'}]
         self.assertEqual(x.word_solved(), False)
 
+    def test_incremental_building(self):
+        x = wordselection.WordSelection('nonce')
+        x.farsi = 'پنجره'
+        x.create_word_structure()
+        empty_compare = [{'پ': ''}, {'ن': ''}, {'ج': ''}, {'ر': ''}, {'ه': ''}]
+        self.assertEqual(x.word_structure, empty_compare)
+
 
 if __name__ == '__main__':
     unittest.main()
