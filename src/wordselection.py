@@ -117,20 +117,15 @@ class WordSelection(object):
         # TODO regsubs
         output = ""
         tmp = copy.deepcopy(self.word_structure)
-        print(tmp)
         for key_pair in tmp:
             (key, value), = key_pair.items()
-            print(f'Popping {key} {value}')
             if key == ' ':
                 output += ' - '
                 continue
             if value:
-                print(f'supposedly: {value}')
                 output += f' {value} '
             else:
-                print('blank')
                 output += ' _ '
-            print(f'output: {output}')
         return output
 
     def update_word_structure(self, letter):
@@ -138,18 +133,13 @@ class WordSelection(object):
         """
         # TODO: make this into a comprhension
         tmp = list()
-        print(f'WRD: {self.word_structure}')
         for pair in self.word_structure:
             (k, v), = pair.items()
-            print(k, v)
             if k == letter:
                 tmp.append({k: letter})
             else:
                 tmp.append({k: v})
-            print(f'TMP: {tmp}')
-        print(f'Comparison: {tmp}')
         self.word_structure = copy.deepcopy(tmp)
-        print(f'After copy: {self.word_structure}')
 
     def word_solved(self):
         """word_solved - checks if solved
