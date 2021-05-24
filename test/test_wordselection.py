@@ -98,7 +98,7 @@ class Testing(unittest.TestCase):
     def test_confirm_pick_word_handles_empty(self):
         x = wordselection.WordSelection('../data/nouns.txt')
         with self.assertRaises(ValueError) as context:
-            word_group = x.pick_word_group()
+            x.pick_word_group()
         self.assertTrue(context.exception)
 
     def test_pick_some_default(self):
