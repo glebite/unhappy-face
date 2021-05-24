@@ -1,28 +1,26 @@
 import unittest
 import wordselection
 
+WORD_GROUP_PICK = 3
+
 
 class Testing(unittest.TestCase):
     def test_creation(self):
         x = wordselection.WordSelection('nonce')
         self.assertNotEqual(x, None)
-        del x
 
     def test_confirm_arguments(self):
         x = wordselection.WordSelection('nonce')
         self.assertEqual(x.file_name, 'nonce')
-        del x
 
     def test_confirm_farsi_empty(self):
         x = wordselection.WordSelection('nonce')
         self.assertEqual(x.farsi, '')
-        del x
 
     def test_confirm_check_guess(self):
         x = wordselection.WordSelection('nonce')
         x.farsi = ' شهر'
         self.assertEqual(x.check_guess('ه'), True)
-        del x
 
     def test_confirm_check_guess_false(self):
         x = wordselection.WordSelection('nonce')
@@ -35,7 +33,6 @@ class Testing(unittest.TestCase):
         test_structure = [{'a': ''}, {'b': ''}, {'c': ''}]
         x.create_word_structure()
         self.assertEqual(x.word_structure, test_structure)
-        del x
 
     def test_output_word_structure(self):
         x = wordselection.WordSelection('nonce')
@@ -43,14 +40,12 @@ class Testing(unittest.TestCase):
         x.create_word_structure()
         expected_output = " _  _  _ "
         self.assertEqual(x.output_word_structure(), expected_output)
-        del x
 
     def test_word_not_solved(self):
         x = wordselection.WordSelection('nonce')
         x.farsi = 'abc'
         x.create_word_structure()
         self.assertEqual(x.word_solved(), False)
-        del x
 
     def test_word_solved(self):
         x = wordselection.WordSelection('nonce')
@@ -58,7 +53,6 @@ class Testing(unittest.TestCase):
         x.create_word_structure()
         x.word_structure = [{'a': 'a'}, {'b': 'b'}, {'c': 'c'}]
         self.assertEqual(x.word_solved(), True)
-        del x
 
     def test_word_partially_solved(self):
         x = wordselection.WordSelection('nonce')
@@ -66,7 +60,6 @@ class Testing(unittest.TestCase):
         x.create_word_structure()
         x.word_structure = [{'a': 'a'}, {'b': ''}, {'c': 'c'}]
         self.assertEqual(x.word_solved(), False)
-        del x
 
     def test_incremental_building(self):
         x = wordselection.WordSelection('nonce')
@@ -95,6 +88,39 @@ class Testing(unittest.TestCase):
             (key, value), = keypair.items()
             x.update_word_structure(key)
         self.assertEqual(x.word_structure, full_compare)
+
+    def test_pick_some_default(self):
+        x = wordselection.WordSelection('../data/nouns.txt')
+        x.read_file()
+        word_group = x.pick_word_group()
+        picks = x.pick_some_english(word_group)
+        self.assertEqual(len(picks), wordselection.PICK_ENGLISH)
+
+    def test_pick_some_number(self):
+        x = wordselection.WordSelection('../data/nouns.txt')
+        x.read_file()
+        word_group = x.pick_word_group()
+        picks = x.pick_some_english(word_group, k=WORD_GROUP_PICK)
+        self.assertEqual(len(picks), WORD_GROUP_PICK)
+
+    def test_read_file_happy(self):
+        x = wordselection.WordSelection('../data/nouns.txt')
+        try:
+            x.read_file()
+            self.assertTrue(True)
+        except Exception as e:
+            # TODO: yes, need to define a few other checks here
+            print(f'This has failed because: {e}')
+            self.assertFalse(True)
+
+    def test_read_file_bad(self):
+        x = wordselection.WordSelection('../data/nounsdonotexist.txt')
+        try:
+            x.read_file()
+            self.assertFalse(True)
+        except Exception as e:
+            # TODO: yes, need to define a few other checks here
+            self.assertTrue(True)
 
 
 if __name__ == '__main__':

@@ -86,6 +86,7 @@ class WordSelection(object):
         temp_word_bag.pop(word_group[0])
 
         # temp_word_bag[word_key] is a tuple - we want the first entry
+        # TODO: k=k problem when length of word_bag is < k
         picks = [temp_word_bag[word_key][0] for word_key in
                  random.sample(list(temp_word_bag), k=k)]
         return picks
