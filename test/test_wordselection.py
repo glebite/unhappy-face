@@ -108,8 +108,7 @@ class Testing(unittest.TestCase):
         try:
             x.read_file()
             self.assertTrue(True)
-        except Exception as e:
-            # TODO: yes, need to define a few other checks here
+        except FileNotFoundError as e:
             print(f'This has failed because: {e}')
             self.assertFalse(True)
 
@@ -118,8 +117,7 @@ class Testing(unittest.TestCase):
         try:
             x.read_file()
             self.assertFalse(True)
-        except Exception as e:
-            # TODO: yes, need to define a few other checks here
+        except FileNotFoundError:
             self.assertTrue(True)
 
 
