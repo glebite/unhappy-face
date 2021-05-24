@@ -69,6 +69,9 @@ class WordSelection(object):
         param:  None
         return: list containing farsi, english, english def
         """
+        # TODO: whatif word_bag isn't populated?  Throw something
+        if not self.word_bag:
+            raise ValueError
         farsi = random.choice(list(self.word_bag))
         english, english_desc = self.word_bag[farsi]
         self.farsi = farsi

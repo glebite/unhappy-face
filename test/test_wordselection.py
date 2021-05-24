@@ -89,6 +89,18 @@ class Testing(unittest.TestCase):
             x.update_word_structure(key)
         self.assertEqual(x.word_structure, full_compare)
 
+    def test_quick_pick_word_group(self):
+        x = wordselection.WordSelection('../data/nouns.txt')
+        x.read_file()
+        word_group = x.pick_word_group()
+        self.assertTrue(len(word_group))
+
+    def test_confirm_pick_word_handles_empty(self):
+        x = wordselection.WordSelection('../data/nouns.txt')
+        with self.assertRaises(ValueError) as context:
+            word_group = x.pick_word_group()
+        self.assertTrue(context.exception)
+
     def test_pick_some_default(self):
         x = wordselection.WordSelection('../data/nouns.txt')
         x.read_file()
