@@ -117,8 +117,15 @@ class WordSelection(object):
 
     def output_word_structure(self):
         """ create_word_structure
+
+        This works for generating ABJAD output but LATIN is reversed.
+
+        Right now the intent is for ABJAD based character sets so I'm
+        leaving it here but put in a TODO to deal with potential
+        future work to make it all pretty.
         """
-        # TODO regsubs
+        # TODO: regsubs?
+        # TODO: need code to handle ABJAD vs LATIN (eventually)
         output = ""
         tmp = copy.deepcopy(self.word_structure)
         for key_pair in tmp:
@@ -127,9 +134,9 @@ class WordSelection(object):
                 output += ' - '
                 continue
             if value:
-                output += f' {value} '
+                output = f' {value} ' + output
             else:
-                output += ' _ '
+                output = ' _ ' + output
         return output
 
     def update_word_structure(self, letter):
