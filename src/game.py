@@ -55,8 +55,9 @@ class Game(object):
                 print('Boo you lose!')
                 self.ingame = False
                 print(self.game.stats)
-            print('Draw unhappy bits...')
-            self.unhappy.draw()
+            if self.game.stats['incorrect letters']:
+                print('Draw unhappy bits...')
+                self.unhappy.draw()
 
 
 def main():
