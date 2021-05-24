@@ -25,11 +25,9 @@ class Game(object):
     def run(self):
         """run
         """
-        # print(f'Word: {self.word_group}')
-
+        # TODO: refactor this okay, pumpkin?
         while self.ingame:
-            # print(self.userinput.display_characters())
-            self.userinput.display_characters()
+            print(self.userinput.display_characters())
             print(self.wordselection.output_word_structure())
             command = self.userinput.prompt()
             if command == "quit":
@@ -37,7 +35,6 @@ class Game(object):
             elif command == "reset":
                 self.ingame = False
             else:
-                # if command in self.word_group[0]:
                 if self.wordselection.check_guess(command):
                     print(f'{command} found!')
                     self.wordselection.update_word_structure(command)

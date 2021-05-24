@@ -54,7 +54,7 @@ class UserInput(object):
     def display_characters(self):
         """display_characters
         """
-        print(f'{self.character_set}')
+        return f'{self.character_set}'
 
     def remove_character(self, character):
         """

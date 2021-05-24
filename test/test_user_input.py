@@ -11,6 +11,10 @@ class Testing(unittest.TestCase):
         x = userinput.UserInput()
         self.assertEqual(x.character_set, userinput.CHARACTERS)
 
+    def test_charset_display(self):
+        x = userinput.UserInput()
+        self.assertEqual(str(x.character_set), str(x.display_characters()))
+
     def test_charset_remove(self):
         x = userinput.UserInput()
         # my favourite character :)
