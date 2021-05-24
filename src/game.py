@@ -29,7 +29,7 @@ class Game(object):
 
         while self.ingame:
             # print(self.userinput.display_characters())
-            print(userinput.CHARACTERS)
+            self.userinput.display_characters()
             print(self.wordselection.output_word_structure())
             command = self.userinput.prompt()
             if command == "quit":
@@ -37,7 +37,8 @@ class Game(object):
             elif command == "reset":
                 self.ingame = False
             else:
-                if command in self.word_group[0]:
+                # if command in self.word_group[0]:
+                if self.wordselection.check_guess(command):
                     print(f'{command} found!')
                     self.wordselection.update_word_structure(command)
                     self.game.incr_stat('correct letters')
@@ -53,10 +54,13 @@ class Game(object):
                     continue
             if self.wordselection.word_solved():
                 print('Yay you win!')
+                print(self.wordselection.output_word_structure())
+                print(f'The word was: {self.word_group[0]}')
                 self.ingame = False
                 print(self.game.stats)
             if self.game.stats['incorrect letters'] == unhappy.NORMALGAME:
                 print('Boo you lose!')
+                print(f'\tThe word was: {self.word_group[0]}')
                 self.ingame = False
                 print(self.game.stats)
             if self.game.stats['incorrect letters']:
