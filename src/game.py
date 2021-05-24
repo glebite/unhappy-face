@@ -29,6 +29,7 @@ class Game(object):
 
         while self.ingame:
             # print(self.userinput.display_characters())
+            print(userinput.CHARACTERS)
             print(self.wordselection.output_word_structure())
             command = self.userinput.prompt()
             if command == "quit":
