@@ -29,8 +29,6 @@ class Game(object):
 
         while self.ingame:
             # print(self.userinput.display_characters())
-            print(f'Word: {self.word_group}')
-            print(f'Something: {self.wordselection.word_structure}')
             print(self.wordselection.output_word_structure())
             command = self.userinput.prompt()
             if command == "quit":
@@ -46,7 +44,12 @@ class Game(object):
                     print(f'{command} not found!')
                     self.game.incr_stat('incorrect letters')
                     self.unhappy.incr()
-                self.userinput.remove_character(command)
+                try:
+                    self.userinput.remove_character(command)
+                except KeyError:
+                    print(f'{command} is not in the set - you'
+                          ' will not be punished.')
+                    continue
             if self.wordselection.word_solved():
                 print('Yay you win!')
                 self.ingame = False

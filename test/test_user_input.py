@@ -17,6 +17,15 @@ class Testing(unittest.TestCase):
         x.remove_character('پ')
         self.assertNotIn('پ', x.character_set)
 
+    def test_charset_remove_missing(self):
+        x = userinput.UserInput()
+        # my favourite character :)
+        try:
+            x.remove_character('+')
+            self.assertFalse(False)
+        except KeyError:
+            self.assertTrue(True)
+
 
 if __name__ == '__main__':
     unittest.main()

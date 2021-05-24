@@ -64,6 +64,8 @@ class UserInput(object):
         except ValueError:
             print(f'{character} is not in current charset:'
                   f' {self.character_set}')
+        except KeyError:
+            raise KeyError
 
 
 def main():
