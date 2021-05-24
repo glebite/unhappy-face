@@ -132,6 +132,22 @@ class Testing(unittest.TestCase):
         except FileNotFoundError:
             self.assertTrue(True)
 
+    def test_last_letter_abjad_output(self):
+        x = wordselection.WordSelection('nonce')
+        x.farsi = 'شهر'
+        x.create_word_structure()
+        expected_output = " ر  _  _ "
+        x.update_word_structure('ر')
+        self.assertEqual(x.output_word_structure(), expected_output)
+
+    def test_first_letter_abjad_output(self):
+        x = wordselection.WordSelection('nonce')
+        x.farsi = 'شهر'
+        x.create_word_structure()
+        expected_output = " _  _  ش "
+        x.update_word_structure('ش')
+        self.assertEqual(x.output_word_structure(), expected_output)
+
 
 if __name__ == '__main__':
     unittest.main()
