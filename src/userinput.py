@@ -36,7 +36,7 @@ CHARACTERS = {'ا': 'alef',
 
 
 class UserInput(object):
-    """
+    """UserInput
     """
     def __init__(self):
         """__init__
@@ -45,6 +45,8 @@ class UserInput(object):
 
     def prompt(self):
         """prompt
+
+        :return: userinput
         """
         print('Enter user input: ')
         userinput = input()
@@ -52,12 +54,17 @@ class UserInput(object):
         return userinput
 
     def display_characters(self):
-        """display_characters
+        """display_characters - returns the character_set
+
+        :return: string with self.character_set
         """
         return f'{self.character_set}'
 
     def remove_character(self, character):
-        """
+        """remove_character - removes a character from the charset
+
+        :param:  character
+        :raise:  KeyError if character not in character_set
         """
         try:
             self.character_set.pop(character)
