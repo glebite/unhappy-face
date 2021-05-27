@@ -11,7 +11,7 @@ class Game(object):
     """
     """
     def __init__(self):
-        """
+        """__init__
         """
         self.game = gamecore.GameCore('')
         self.unhappy = unhappy.Unhappy()
@@ -23,7 +23,7 @@ class Game(object):
         self.ingame = True
 
     def run(self):
-        """run
+        """run - main run engine
         """
         # TODO: refactor this okay, pumpkin?
         while self.ingame:
