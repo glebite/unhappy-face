@@ -164,6 +164,5 @@ class Testing(unittest.TestCase):
         print(f'{x.output_word_structure()}')
 
 
-
 if __name__ == '__main__':
     unittest.main()
