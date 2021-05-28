@@ -80,7 +80,7 @@ class UserInput(object):
 
 
 def main():
-    """
+    """main - stub for running as a tool/quick test
     """
     x = UserInput()
     x.display_characters()

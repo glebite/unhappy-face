@@ -148,6 +148,22 @@ class Testing(unittest.TestCase):
         x.update_word_structure('ش')
         self.assertEqual(x.output_word_structure(), expected_output)
 
+    def test_one_letter_at_a_time(self):
+        x = wordselection.WordSelection('nonce')
+        x.farsi = 'شهر'
+        x.create_word_structure()
+        expected_output = " _  _  ش "
+        x.update_word_structure('ش')
+        self.assertEqual(x.output_word_structure(), expected_output)
+        expected_output = " _  ه  ش "
+        x.update_word_structure('ه')
+        self.assertEqual(x.output_word_structure(), expected_output)
+        expected_output = " ر  ه  ش "
+        x.update_word_structure('ر')
+        self.assertEqual(x.output_word_structure(), expected_output)
+        print(f'{x.output_word_structure()}')
+
+
 
 if __name__ == '__main__':
     unittest.main()
