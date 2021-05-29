@@ -143,9 +143,11 @@ class WordSelection(object):
         """update_word_structure
         """
         # TODO: make this into a comprhension
+        print(f'Next update of {letter}')
         tmp = list()
-        for pair in self.word_structure:
+        for pair in self.word_structure[::-1]:
             (k, v), = pair.items()
+            print(f'DEBUG: {k} {v}')
             if k == letter:
                 tmp.append({k: letter})
             else:
