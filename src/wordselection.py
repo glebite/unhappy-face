@@ -170,7 +170,9 @@ class WordSelection(object):
 
 
 def main(arguments):
-    """
+    """main - stub to call as tool/mini-test/demo
+
+    :param:  arguments
     """
     x = WordSelection(arguments)
     x.read_file()
