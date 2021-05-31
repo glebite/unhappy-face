@@ -44,7 +44,7 @@ class UserInput(object):
         self.character_set = CHARACTERS.copy()
 
     def prompt(self):
-        """prompt - basic user input prompt 
+        """prompt - basic user input prompt
 
         This prompt function does no checks on the input for
         now so it is conceivable to enter nothing.
