@@ -168,6 +168,12 @@ class WordSelection(object):
                 rc = False
         return rc
 
+    def output_word_guessing(self):
+        """output_word_guessing
+        """
+        for word in self.pick_some_english():
+            print(f' another word? {word}')
+
 
 def main(arguments):
     """main - stub to call as tool/mini-test/demo
