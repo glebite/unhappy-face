@@ -169,7 +169,7 @@ class WordSelection(object):
         return rc
 
     def output_word_guessing(self):
-        """output_word_guessing
+        """output_word_guessing - guess word meaning
         """
         for word in self.pick_some_english():
             print(f' another word? {word}')
