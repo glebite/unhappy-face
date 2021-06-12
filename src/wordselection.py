@@ -21,13 +21,13 @@ PICK_ENGLISH = 4
 class WordSelection(object):
     """WordSelection
     """
-    def __init__(self, arguments):
+    def __init__(self, file_name):
         """__init__ - create the WordSelection object
 
-        param:  arguments
+        param:  file_name - name of the file to load
         return: n/a
         """
-        self.file_name = arguments
+        self.file_name = file_name
         self.word_bag = dict()
         self.word_structure = list()
         self.farsi = ''
