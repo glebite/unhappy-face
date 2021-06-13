@@ -98,7 +98,7 @@ class WordSelection(object):
         """check_guess
 
         :param:  guess_letter - the letter being guessed
-        :return: result - True (correct) or False (incorrect)
+        :return: True (correct) or False (incorrect)
         """
         return guess_letter in self.farsi
 
