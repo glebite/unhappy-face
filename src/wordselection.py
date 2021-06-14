@@ -16,6 +16,9 @@ import copy
 
 
 PICK_ENGLISH = 4
+SINGLE_SPACE = ' '
+SPACE_INDICATOR = ' - '
+UNKNOWN_INDICATOR = ' _ '
 
 
 class WordSelection(object):
@@ -130,13 +133,13 @@ class WordSelection(object):
         tmp = copy.deepcopy(self.word_structure)
         for key_pair in tmp:
             (key, value), = key_pair.items()
-            if key == ' ':
-                output += ' - '
+            if key == SINGLE_SPACE:
+                output += SPACE_INDICATOR
                 continue
             if value:
                 output = f' {value} ' + output
             else:
-                output = ' _ ' + output
+                output = UNKNKOWN_INDICATOR + output
         return output
 
     def update_word_structure(self, letter):
