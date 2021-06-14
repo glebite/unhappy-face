@@ -139,7 +139,7 @@ class WordSelection(object):
             if value:
                 output = f' {value} ' + output
             else:
-                output = UNKNKOWN_INDICATOR + output
+                output = UNKNOWN_INDICATOR + output
         return output
 
     def update_word_structure(self, letter):
