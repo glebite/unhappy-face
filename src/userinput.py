@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """
+userinput.py
+
+base class for the ability to input
+
+
 """
+# TODO: move characters to their own language file
 CHARACTERS = {'ا': 'alef',
               'ب': 'be',
               'پ': 'pe',
