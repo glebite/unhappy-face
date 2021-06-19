@@ -2,10 +2,10 @@
 """wordselection.py
 
 So the idea is that this class/module will allow for the
-reading in of a .csv file and the game can select the current_farsi_word
+reading in of a .csv file and the game can select the _word
 to be tried out, and upon success or failure, there is a method that
 then allows for the second phase of the game where the user is prompted
-to match the Farsi word with a list of english words!!!
+to match the Farsi word with a list of secondary words!!!
 
 Ultimately, this can be moved out to use other languages and such but
 for now it will just be Farsi and English.
@@ -15,7 +15,7 @@ import random
 import copy
 
 
-PICK_ENGLISH = 4
+PICK_SECONDARY = 4
 SINGLE_SPACE = ' '
 SPACE_INDICATOR = ' - '
 UNKNOWN_INDICATOR = ' _ '
@@ -81,7 +81,7 @@ class WordSelection(object):
         self.create_word_structure()
         return [farsi, english, english_desc]
 
-    def pick_some_english(self, word_group, k=PICK_ENGLISH):
+    def pick_some_english(self, word_group, k=PICK_SECONDARY):
         """pick_some_english - find 'k' english words
 
         param:  word_group - the list returned from pick_word
