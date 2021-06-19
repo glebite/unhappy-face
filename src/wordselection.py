@@ -8,7 +8,7 @@ then allows for the second phase of the game where the user is prompted
 to match the Farsi word with a list of secondary words!!!
 
 Ultimately, this can be moved out to use other languages and such but
-for now it will just be Farsi and English.
+for now it will just be Farsi and Secondary.
 """
 import csv
 import random
@@ -33,7 +33,7 @@ class WordSelection(object):
         self.file_name = file_name
         self.word_bag = dict()
         self.word_structure = list()
-        self.farsi = ''
+        self.primary = ''
 
     def __str__(self):
         """__str__ - string representation
@@ -49,13 +49,13 @@ class WordSelection(object):
         """read_file - reads a .csv file filled with words
 
         Word list files are in .csv (, comma) delimitered according to:
-        English, Farsi, English Description
+        Secondary, Primary, Secondary Description
         ...
         EOF
 
         A dictionary is created from the column values with end whitespaces
         stripped as part of the data cleaning:
-        Farsi: (English, English Description)
+        Primary: (Secondary, Secondary Description)
 
         param:  None
         return: None
@@ -70,25 +70,25 @@ class WordSelection(object):
         """pick_word_group - randomly select a word to use
 
         param:  None
-        return: list containing farsi, english, english def
+        return: list containing primary, secondary, secondary def
         """
         # TODO: whatif word_bag isn't populated?  Throw something
         if not self.word_bag:
             raise ValueError
-        farsi = random.choice(list(self.word_bag))
-        english, english_desc = self.word_bag[farsi]
-        self.farsi = farsi
+        primary = random.choice(list(self.word_bag))
+        secondary, secondary_desc = self.word_bag[primary]
+        self.primary = primary
         self.create_word_structure()
-        return [farsi, english, english_desc]
+        return [primary, secondary, secondary_desc]
 
-    def pick_some_english(self, word_group, k=PICK_SECONDARY):
-        """pick_some_english - find 'k' english words
+    def pick_some_secondary(self, word_group, k=PICK_SECONDARY):
+        """pick_some_secondary - find 'k' secondary words
 
         param:  word_group - the list returned from pick_word
-        return: picks - a list of 'k' english words for comparison
+        return: picks - a list of 'k' secondary words for comparison
         """
         temp_word_bag = self.word_bag
-        # remove the current_farsi_word from our selection base
+        # remove the current_primary_word from our selection base
         temp_word_bag.pop(word_group[0])
 
         # temp_word_bag[word_key] is a tuple - we want the first entry
@@ -103,7 +103,7 @@ class WordSelection(object):
         :param:  guess_letter - the letter being guessed
         :return: True (correct) or False (incorrect)
         """
-        return guess_letter in self.farsi
+        return guess_letter in self.primary
 
     def update_guessing(self, correct_letter):
         """update_guessing
@@ -116,7 +116,7 @@ class WordSelection(object):
     def create_word_structure(self):
         """create_word_structure
         """
-        self.word_structure = [{k: ''} for k in self.farsi]
+        self.word_structure = [{k: ''} for k in self.primary]
 
     def output_word_structure(self):
         """ create_word_structure
@@ -174,7 +174,7 @@ class WordSelection(object):
     def output_word_guessing(self):
         """output_word_guessing - guess word meaning
         """
-        for word in self.pick_some_english():
+        for word in self.pick_some_secondary():
             print(f' another word? {word}')
 
 
@@ -186,10 +186,10 @@ def main(arguments):
     x = WordSelection(arguments)
     x.read_file()
     y = x.pick_word_group()
-    print(x.pick_some_english(y))
+    print(x.pick_some_secondary(y))
     x.create_word_structure()
     print(x.output_word_structure())
-    print(x.farsi)
+    print(x.primary)
 
 
 if __name__ == "__main__":
