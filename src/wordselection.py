@@ -5,7 +5,7 @@ So the idea is that this class/module will allow for the
 reading in of a .csv file and the game can select the _word
 to be tried out, and upon success or failure, there is a method that
 then allows for the second phase of the game where the user is prompted
-to match the Farsi word with a list of secondary words!!!
+to match the primary word with a list of secondary words!!!
 
 Ultimately, this can be moved out to use other languages and such but
 for now it will just be Farsi and Secondary.

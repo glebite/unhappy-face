@@ -13,57 +13,57 @@ class Testing(unittest.TestCase):
         x = wordselection.WordSelection('nonce')
         self.assertEqual(x.file_name, 'nonce')
 
-    def test_confirm_farsi_empty(self):
+    def test_confirm_primary_empty(self):
         x = wordselection.WordSelection('nonce')
-        self.assertEqual(x.farsi, '')
+        self.assertEqual(x.primary, '')
 
     def test_confirm_check_guess(self):
         x = wordselection.WordSelection('nonce')
-        x.farsi = ' شهر'
+        x.primary = ' شهر'
         self.assertEqual(x.check_guess('ه'), True)
 
     def test_confirm_check_guess_false(self):
         x = wordselection.WordSelection('nonce')
-        x.farsi = ' شهر'
+        x.primary = ' شهر'
         self.assertEqual(x.check_guess('a'), False)
 
     def test_word_structure(self):
         x = wordselection.WordSelection('nonce')
-        x.farsi = 'abc'
+        x.primary = 'abc'
         test_structure = [{'a': ''}, {'b': ''}, {'c': ''}]
         x.create_word_structure()
         self.assertEqual(x.word_structure, test_structure)
 
     def test_output_word_structure(self):
         x = wordselection.WordSelection('nonce')
-        x.farsi = 'abc'
+        x.primary = 'abc'
         x.create_word_structure()
         expected_output = " _  _  _ "
         self.assertEqual(x.output_word_structure(), expected_output)
 
     def test_word_not_solved(self):
         x = wordselection.WordSelection('nonce')
-        x.farsi = 'abc'
+        x.primary = 'abc'
         x.create_word_structure()
         self.assertEqual(x.word_solved(), False)
 
     def test_word_solved(self):
         x = wordselection.WordSelection('nonce')
-        x.farsi = 'abc'
+        x.primary = 'abc'
         x.create_word_structure()
         x.word_structure = [{'a': 'a'}, {'b': 'b'}, {'c': 'c'}]
         self.assertEqual(x.word_solved(), True)
 
     def test_word_partially_solved(self):
         x = wordselection.WordSelection('nonce')
-        x.farsi = 'abc'
+        x.primary = 'abc'
         x.create_word_structure()
         x.word_structure = [{'a': 'a'}, {'b': ''}, {'c': 'c'}]
         self.assertEqual(x.word_solved(), False)
 
     def test_incremental_building(self):
         x = wordselection.WordSelection('nonce')
-        x.farsi = 'پنجره'
+        x.primary = 'پنجره'
         x.create_word_structure()
         empty_compare = [{'پ': ''}, {'ن': ''},
                          {'ج': ''}, {'ر': ''}, {'ه': ''}]
@@ -77,7 +77,7 @@ class Testing(unittest.TestCase):
 
     def test_reverse_building(self):
         x = wordselection.WordSelection('nonce')
-        x.farsi = 'پنجره'
+        x.primary = 'پنجره'
         x.create_word_structure()
         empty_compare = [{'پ': ''}, {'ن': ''},
                          {'ج': ''}, {'ر': ''}, {'ه': ''}]
@@ -134,7 +134,7 @@ class Testing(unittest.TestCase):
 
     def test_last_letter_abjad_output(self):
         x = wordselection.WordSelection('nonce')
-        x.farsi = 'شهر'
+        x.primary = 'شهر'
         x.create_word_structure()
         expected_output = " ر  _  _ "
         x.update_word_structure('ر')
@@ -142,7 +142,7 @@ class Testing(unittest.TestCase):
 
     def test_first_letter_abjad_output(self):
         x = wordselection.WordSelection('nonce')
-        x.farsi = 'شهر'
+        x.primary = 'شهر'
         x.create_word_structure()
         expected_output = " _  _  ش "
         x.update_word_structure('ش')
@@ -150,7 +150,7 @@ class Testing(unittest.TestCase):
 
     def test_one_letter_at_a_time(self):
         x = wordselection.WordSelection('nonce')
-        x.farsi = 'شهر'
+        x.primary = 'شهر'
         x.create_word_structure()
         print(f'\n{x.output_word_structure()}\n')
         expected_output = " _  _  ش "
