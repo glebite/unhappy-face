@@ -105,14 +105,14 @@ class Testing(unittest.TestCase):
         x = wordselection.WordSelection('../data/nouns.txt')
         x.read_file()
         word_group = x.pick_word_group()
-        picks = x.pick_some_english(word_group)
-        self.assertEqual(len(picks), wordselection.PICK_ENGLISH)
+        picks = x.pick_some_secondary(word_group)
+        self.assertEqual(len(picks), wordselection.PICK_SECONDARY)
 
     def test_pick_some_number(self):
         x = wordselection.WordSelection('../data/nouns.txt')
         x.read_file()
         word_group = x.pick_word_group()
-        picks = x.pick_some_english(word_group, k=WORD_GROUP_PICK)
+        picks = x.pick_some_secondary(word_group, k=WORD_GROUP_PICK)
         self.assertEqual(len(picks), WORD_GROUP_PICK)
 
     def test_read_file_happy(self):
