@@ -13,10 +13,14 @@ NORMALGAME = len(FACEPIECES)
 
 
 class Unhappy(object):
-    """
+    """Unhappy - class to manage the display of the game pieces.
     """
     def __init__(self, n_pieces=NORMALGAME):
-        """__init__ -
+        """__init__ -start this one up
+
+        :param:     n_pieces - number of pieces to make up the face.
+        :return:    n/a
+        :exception: n/a
         """
         if n_pieces <= 0:
             raise ValueError
@@ -36,9 +40,13 @@ class Unhappy(object):
         return f'Unhappy(n_pieces={self.n_pieces})'
 
     def incr(self):
+        """incr - method to increment the to_draw value
+        """
         self.to_draw += 1
 
     def clear(self):
+        """clear - reset/erace the characters
+        """
         self.to_draw = 0
 
 

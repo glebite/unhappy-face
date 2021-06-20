@@ -19,12 +19,12 @@ class Testing(unittest.TestCase):
 
     def test_confirm_check_guess(self):
         x = wordselection.WordSelection('nonce')
-        x.primary = ' شهر'
+        x.primary = 'شهر'
         self.assertEqual(x.check_guess('ه'), True)
 
     def test_confirm_check_guess_false(self):
         x = wordselection.WordSelection('nonce')
-        x.primary = ' شهر'
+        x.primary = 'شهر'
         self.assertEqual(x.check_guess('a'), False)
 
     def test_word_structure(self):
