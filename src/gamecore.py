@@ -27,12 +27,24 @@ class GameCore(object):
         return f'{self}'
 
     def incr_stat(self, stat):
+        """incr_stat - increment a given stat
+
+        :param:  stat - the statistic to increment
+        :return: n/a
+        :raises: ValueError if the stat doesn't exist
+        """
         if stat in self.stats:
             self.stats[stat] += 1
         else:
             raise ValueError
 
     def clear_stats(self):
+        """clear_stats - clear out the game stats
+
+        :param:  n/a
+        :return: n/a
+        :raise:  n/a
+        """
         for key in self.stats.keys():
             self.stats[key] = 0
 
