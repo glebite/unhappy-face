@@ -16,9 +16,9 @@ import copy
 
 
 PICK_SECONDARY = 4
-SINGLE_SPACE = ' '
-SPACE_INDICATOR = ' - '
-UNKNOWN_INDICATOR = ' _ '
+SINGLE_SPACE = u' '
+SPACE_INDICATOR = u' - '
+UNKNOWN_INDICATOR = u' _ '
 
 
 class WordSelection(object):
@@ -33,7 +33,7 @@ class WordSelection(object):
         self.file_name = file_name
         self.word_bag = dict()
         self.word_structure = list()
-        self.primary = ''
+        self.primary = u''
 
     def __str__(self):
         """__str__ - string representation

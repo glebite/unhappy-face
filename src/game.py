@@ -51,7 +51,7 @@ class Game(object):
                     continue
             if self.wordselection.word_solved():
                 print('Yay you win!')
-                print(self.wordselection.output_word_structure())
+                print(self.wordselection.output_word_structure()[::-1])
                 print(f'The word was: {self.word_group[0]}')
                 self.ingame = False
                 print(self.game.stats)
