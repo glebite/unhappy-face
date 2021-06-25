@@ -10,7 +10,7 @@ car, ماشین, mashin
 street, خیابان, khiaban
 shop, فروشگاه, forushgah
 door, در, dar
-table, میز, jadval
+table, میز, miz
 chair, 	صندلی, sandali
 window, پنجره, panjereh
 newspaper, روزنامه, ruzname
@@ -27,5 +27,4 @@ passport, گذرنامه, gozarnameh
 language, زبان, zaban
 question, سوال, soal
 answer, جواب دادن, javab dadan
-beginning, شروع, aghaz
 end, پایان, payan

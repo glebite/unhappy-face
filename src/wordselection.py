@@ -19,7 +19,8 @@ PICK_SECONDARY = 4
 SINGLE_SPACE = u' '
 SPACE_INDICATOR = u' - '
 UNKNOWN_INDICATOR = u' _ '
-
+RTL = u'\u2067'
+RTLPOP = u'\u2069'
 
 class WordSelection(object):
     """WordSelection
@@ -123,33 +124,30 @@ class WordSelection(object):
 
         This works for generating ABJAD output but LATIN is reversed.
 
-        Right now the intent is for ABJAD based character sets so I'm
+        Right now the intent is for R2L based character sets so I'm
         leaving it here but put in a TODO to deal with potential
         future work to make it all pretty.
         """
         # TODO: regsubs?
-        # TODO: need code to handle ABJAD vs LATIN (eventually)
-        output = ''
+        # TODO: need code to handle direction (eventually)
+        output = u''
         tmp = copy.deepcopy(self.word_structure)
-
-        breakpoint()
         for key_pair in tmp:
             (key, value), = key_pair.items()
             if key == SINGLE_SPACE:
-                output += SPACE_INDICATOR
+                output = SPACE_INDICATOR + output
                 continue
             if value:
-                output += f' {value} '
+                output = f' {RTL}{value}{RTLPOP}' + output
             else:
-                output += UNKNOWN_INDICATOR
-        return output[::-1]
+                output = UNKNOWN_INDICATOR + output
+        return output
 
     def update_word_structure(self, letter):
         """update_word_structure
         """
         # TODO: make this into a comprhension
         tmp = list()
-        print(f'Word structure1: {self.word_structure}')
         for pair in self.word_structure:
             (k, v), = pair.items()
             if k == letter:
@@ -157,8 +155,7 @@ class WordSelection(object):
             else:
                 tmp.append({k: v})
         self.word_structure = copy.deepcopy(tmp)
-        print(f'Word structure2: {self.word_structure}')
-        
+
     def word_solved(self):
         """word_solved - checks if solved
 

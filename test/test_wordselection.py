@@ -151,20 +151,21 @@ class Testing(unittest.TestCase):
     def test_one_letter_at_a_time(self):
         x = wordselection.WordSelection('nonce')
         x.primary = 'شهر'
+        x.prinary = 'زبان'
         x.create_word_structure()
-        # print(f'\n{x.output_word_structure()}\n')
+        print(f'\n{x.output_word_structure()}\n')
         expected_output = " _  _  ش "
         x.update_word_structure('ش')
         self.assertEqual(x.output_word_structure(), expected_output)
-        # print(f'{x.output_word_structure()}\n')
+        print(f'{x.output_word_structure()}\n')
         expected_output = " _  ه  ش "
         x.update_word_structure('ه')
         self.assertEqual(x.output_word_structure(), expected_output)
-        # print(f'{x.output_word_structure()}\n')
+        print(f'{x.output_word_structure()}\n')
         expected_output = " ر  ه  ش "
         x.update_word_structure('ر')
         self.assertEqual(x.output_word_structure(), expected_output)
-        # print(f'{x.output_word_structure()}\n')
+        print(f'{x.output_word_structure()}\n')
 
 
 if __name__ == '__main__':
