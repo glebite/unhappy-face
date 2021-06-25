@@ -28,10 +28,8 @@ class Game(object):
         """
         # TODO: refactor this okay, pumpkin?
         # TODO: temp print line here
-        print(self.word_group)
         while self.ingame:
             print(f'Display {self.userinput.display_characters()}')
-            print(f'Status: {self.wordselection.output_word_structure()}')
             command = self.userinput.prompt()
             if command == "quit":
                 self.ingame = False
