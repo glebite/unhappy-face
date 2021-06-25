@@ -129,24 +129,27 @@ class WordSelection(object):
         """
         # TODO: regsubs?
         # TODO: need code to handle ABJAD vs LATIN (eventually)
-        output = ""
+        output = ''
         tmp = copy.deepcopy(self.word_structure)
+
+        breakpoint()
         for key_pair in tmp:
             (key, value), = key_pair.items()
             if key == SINGLE_SPACE:
                 output += SPACE_INDICATOR
                 continue
             if value:
-                output = f' {value} ' + output
+                output += f' {value} '
             else:
-                output = UNKNOWN_INDICATOR + output
-        return output
+                output += UNKNOWN_INDICATOR
+        return output[::-1]
 
     def update_word_structure(self, letter):
         """update_word_structure
         """
         # TODO: make this into a comprhension
         tmp = list()
+        print(f'Word structure1: {self.word_structure}')
         for pair in self.word_structure:
             (k, v), = pair.items()
             if k == letter:
@@ -154,7 +157,8 @@ class WordSelection(object):
             else:
                 tmp.append({k: v})
         self.word_structure = copy.deepcopy(tmp)
-
+        print(f'Word structure2: {self.word_structure}')
+        
     def word_solved(self):
         """word_solved - checks if solved
 

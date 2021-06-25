@@ -20,15 +20,18 @@ class Game(object):
         self.wordselection = wordselection.WordSelection('../data/nouns.txt')
         self.wordselection.read_file()
         self.word_group = (self.wordselection.pick_word_group())
+        self.wordselection.create_word_structure()
         self.ingame = True
 
     def run(self):
         """run - main run engine
         """
         # TODO: refactor this okay, pumpkin?
+        # TODO: temp print line here
+        print(self.word_group)
         while self.ingame:
-            print(self.userinput.display_characters())
-            print(self.wordselection.output_word_structure())
+            print(f'Display {self.userinput.display_characters()}')
+            print(f'Status: {self.wordselection.output_word_structure()}')
             command = self.userinput.prompt()
             if command == "quit":
                 self.ingame = False
@@ -51,7 +54,7 @@ class Game(object):
                     continue
             if self.wordselection.word_solved():
                 print('Yay you win!')
-                print(self.wordselection.output_word_structure()[::-1])
+                print(self.wordselection.output_word_structure())
                 print(f'The word was: {self.word_group[0]}')
                 self.ingame = False
                 print(self.game.stats)
