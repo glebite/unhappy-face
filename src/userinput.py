@@ -84,6 +84,18 @@ class UserInput(object):
         except KeyError:
             raise KeyError
 
+    def display_choices(self, word, selection_list):
+        """display_choices - output the multiple choice list
+
+        :param:  word - the word to present to the user 
+        :param:  selection_list - the random list of definitions
+        :return: n/a
+        :raises: n/a
+        """
+        print(f'Primary word: {word}')
+        for choice in enumerate(selection_list):
+            print(f'{choice[0]} ---> {choice[1]}')
+
 
 def main():
     """main - stub for running as a tool/quick test
