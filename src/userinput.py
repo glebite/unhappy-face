@@ -87,7 +87,7 @@ class UserInput(object):
     def display_choices(self, word, selection_list):
         """display_choices - output the multiple choice list
 
-        :param:  word - the word to present to the user 
+        :param:  word - the word to present to the user
         :param:  selection_list - the random list of definitions
         :return: n/a
         :raises: n/a
@@ -96,7 +96,10 @@ class UserInput(object):
         for choice in enumerate(selection_list):
             print(f'{choice[0]} ---> {choice[1]}')
 
-
+    def prompt_guess(self):
+        """
+        """
+        pass
 def main():
     """main - stub for running as a tool/quick test
     """
