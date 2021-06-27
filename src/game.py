@@ -65,6 +65,8 @@ class Game(object):
                 print('Draw unhappy bits...')
                 self.unhappy.draw()
 
+        self.userinput.display_choices(self.word_group[0], [])
+
 
 def main():
     """
