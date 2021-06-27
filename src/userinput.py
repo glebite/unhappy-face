@@ -92,7 +92,8 @@ class UserInput(object):
         :return: n/a
         :raises: n/a
         """
-        print(f'Primary word: {word}')
+        print(f'Primary word: {word[0]}')
+        selection_list.append(word[1])
         for choice in enumerate(selection_list):
             print(f'{choice[0]} ---> {choice[1]}')
 
@@ -100,6 +101,8 @@ class UserInput(object):
         """
         """
         pass
+
+
 def main():
     """main - stub for running as a tool/quick test
     """
