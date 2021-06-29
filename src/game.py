@@ -64,7 +64,7 @@ class Game(object):
         #     if self.game.stats['incorrect letters']:
         #         print('Draw unhappy bits...')
         #         self.unhappy.draw()
-        self.run_game()
+        self.run_game2()
 
     def run_game2(self):
         """run_game2 - extended learning
