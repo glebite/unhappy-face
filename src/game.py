@@ -64,7 +64,11 @@ class Game(object):
         #     if self.game.stats['incorrect letters']:
         #         print('Draw unhappy bits...')
         #         self.unhappy.draw()
+        self.run_game()
 
+    def run_game2(self):
+        """run_game2 - extended learning
+        """
         secondary_list = self.wordselection.pick_some_secondary(self.word_group)
         self.userinput.display_choices(self.word_group, secondary_list)
 
