@@ -6,6 +6,9 @@ base class for the ability to input
 
 
 """
+import random
+
+
 # TODO: move characters to their own language file
 CHARACTERS = {'ا': 'alef',
               'ب': 'be',
@@ -94,6 +97,9 @@ class UserInput(object):
         """
         print(f'Primary word: {word[0]}')
         selection_list.append(word[1])
+
+        # randomize it
+        random.shuffle(selection_list)
         for choice in enumerate(selection_list):
             print(f'{choice[0]} ---> {choice[1]}')
 
