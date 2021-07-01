@@ -28,43 +28,45 @@ class Game(object):
         """
         # TODO: refactor this okay, pumpkin?
         # TODO: temp print line here
-        # while self.ingame:
-        #     print(f'Display {self.userinput.display_characters()}')
-        #     command = self.userinput.prompt()
-        #     if command == "quit":
-        #         self.ingame = False
-        #     elif command == "reset":
-        #         self.ingame = False
-        #     else:
-        #         if self.wordselection.check_guess(command):
-        #             print(f'{command} found!')
-        #             self.wordselection.update_word_structure(command)
-        #             self.game.incr_stat('correct letters')
-        #         else:
-        #             print(f'{command} not found!')
-        #             self.game.incr_stat('incorrect letters')
-        #             self.unhappy.incr()
-        #         try:
-        #             self.userinput.remove_character(command)
-        #         except KeyError:
-        #             print(f'{command} is not in the set - you'
-        #                   ' will not be punished.')
-        #             continue
-        #     if self.wordselection.word_solved():
-        #         print('Yay you win!')
-        #         print(self.wordselection.output_word_structure())
-        #         print(f'The word was: {self.word_group[0]}')
-        #         self.ingame = False
-        #         print(self.game.stats)
-        #     if self.game.stats['incorrect letters'] == unhappy.NORMALGAME:
-        #         print('Boo you lose!')
-        #         print(f'\tThe word was: {self.word_group[0]}')
-        #         self.ingame = False
-        #         print(self.game.stats)
-        #     if self.game.stats['incorrect letters']:
-        #         print('Draw unhappy bits...')
-        #         self.unhappy.draw()
-        self.run_game2()
+        while self.ingame:
+            print(f'Display {self.userinput.display_characters()}')
+            command = self.userinput.prompt()
+            if command == "quit":
+                self.ingame = False
+            elif command == "reset":
+                self.ingame = False
+            else:
+                if self.wordselection.check_guess(command):
+                    print(f'{command} found!')
+                    self.wordselection.update_word_structure(command)
+                    self.game.incr_stat('correct letters')
+                else:
+                    print(f'{command} not found!')
+                    self.game.incr_stat('incorrect letters')
+                    self.unhappy.incr()
+                try:
+                    self.userinput.remove_character(command)
+                except KeyError:
+                    print(f'{command} is not in the set - you'
+                          ' will not be punished.')
+                    continue
+            if self.wordselection.word_solved():
+                print('Yay you win!')
+                print(self.wordselection.output_word_structure())
+                print(f'The word was: {self.word_group[0]}')
+                self.ingame = False
+                print(self.game.stats)
+                self.run_game2()
+
+            if self.game.stats['incorrect letters'] == unhappy.NORMALGAME:
+                print('Boo you lose!')
+                print(f'\tThe word was: {self.word_group[0]}')
+                self.ingame = False
+                print(self.game.stats)
+            if self.game.stats['incorrect letters']:
+                print('Draw unhappy bits...')
+                self.unhappy.draw()
+
 
     def run_game2(self):
         """run_game2 - extended learning
