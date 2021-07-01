@@ -30,6 +30,7 @@ class Game(object):
         # TODO: temp print line here
         while self.ingame:
             print(f'Display {self.userinput.display_characters()}')
+            print(self.wordselection.output_word_structure())
             command = self.userinput.prompt()
             if command == "quit":
                 self.ingame = False
