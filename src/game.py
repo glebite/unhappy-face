@@ -68,11 +68,11 @@ class Game(object):
                 print('Draw unhappy bits...')
                 self.unhappy.draw()
 
-
     def run_game2(self):
         """run_game2 - extended learning
         """
-        secondary_list = self.wordselection.pick_some_secondary(self.word_group)
+        secondary_list = self.wordselection.pick_some_secondary(
+            self.word_group)
         self.userinput.display_choices(self.word_group, secondary_list)
 
 
