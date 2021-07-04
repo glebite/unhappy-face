@@ -87,26 +87,33 @@ class UserInput(object):
         except KeyError:
             raise KeyError
 
-    def display_choices(self, word, selection_list):
+    def display_choices(self, word_group, selection_list):
         """display_choices - output the multiple choice list
 
-        :param:  word - the word to present to the user
+        :param:  word_group - the word to present to the user
         :param:  selection_list - the random list of definitions
         :return: n/a
         :raises: n/a
         """
-        print(f'Primary word: {word[0]}')
-        selection_list.append(word[1])
+        code = 1
+        print(f'Primary word: {word_group[0]}')
+        selection_list.append(word_group[1])
 
         # randomize it
         random.shuffle(selection_list)
         for choice in enumerate(selection_list):
             print(f'{choice[0]} ---> {choice[1]}')
+            if word_group[1] == choice[1]:
+                code = choice[0]
+        return code
 
-    def prompt_guess(self):
+    def prompt_guess(self, success_code):
+        """prompt_guess - if the user selects the correct number, match!
         """
-        """
-        pass
+        user = input()
+        if user == str(success_code):
+            return True
+        return False
 
 
 def main():

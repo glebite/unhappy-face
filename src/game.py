@@ -58,7 +58,7 @@ class Game(object):
                 self.ingame = False
                 print(self.game.stats)
                 self.run_game2()
-
+                break
             if self.game.stats['incorrect letters'] == unhappy.NORMALGAME:
                 print('Boo you lose!')
                 print(f'\tThe word was: {self.word_group[0]}')
@@ -73,8 +73,11 @@ class Game(object):
         """
         secondary_list = self.wordselection.pick_some_secondary(
             self.word_group)
-        self.userinput.display_choices(self.word_group, secondary_list)
-
+        code = self.userinput.display_choices(self.word_group, secondary_list)
+        if self.userinput.prompt_guess(code):
+            print("Yay you won the comprehension part of the game!")
+        else:
+            print("Sorry - you should study definitions more.")
 
 def main():
     """
