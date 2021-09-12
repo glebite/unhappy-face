@@ -10,3 +10,6 @@ Guessing reduces the set of remaining characters.
 
 For reinforcement learning, the user is presented with a multiple choice
 selection for matching the meaning of the word.
+
+Thus far, it's functional.  There's a defect when working over an ssh shell in putty.  :(  
+
